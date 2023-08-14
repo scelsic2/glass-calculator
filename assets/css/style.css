@@ -1,6 +1,8 @@
 :root {
-    --dark: rgba(10, 236, 221, 0.3);
-    --darkest: rgba(246, 4, 77, 0.3);
+    --dark: rgb(117, 196, 100);
+    --darkest: rgb(196, 70, 171);
+    --hover-darkest: rgb(237, 141, 241);
+    --hover-dark: rgb(180, 246, 181);
 }
 
 * {
@@ -10,7 +12,7 @@
 }
 
 html {
-    background: url(../images/bckgnd.jpg) no-repeat center center fixed;
+    background: url(../images/bckgnd2.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 }
@@ -18,7 +20,6 @@ html {
 main {
     display: flex;
     justify-content: center;
-    margin-top: 20vh;
 }
 
 .calc-div {
@@ -30,6 +31,7 @@ main {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 30px;
 }
 
 .screen {
@@ -37,10 +39,13 @@ main {
     padding: 20px;
     margin: 10px;
     margin: auto;
-    border: black 1px solid;
+    border: var(--hover-darkest) 3px solid;
     border-radius: 16px;
     width: 270px;
     height: 18.5px;
+    font-family: 'Handjet', sans-serif;
+    font-size: x-large;
+    box-shadow: 0 4px 30px var(--hover-dark);
 }
 
 .keypad {
@@ -54,7 +59,12 @@ main {
     flex-direction: row;
 }
 
+.row > div {
+    font-size: larger;
+}
+
 .btn {
+    font-family: 'Lobster', sans-serif;
     padding: 20px;
     margin: 10px;
     border: 1px solid black;
@@ -72,16 +82,64 @@ main {
     background: var(--darkest);
 }
 
-.other:hover, .operation:hover {
-    box-shadow: 5px 5px rgba(255, 255, 255, 0.3);
+.other::before {
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+}
+
+.other:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--hover-darkest)
+}
+
+.other:hover {
+    color: var(--hover-darkest);
+    box-shadow: 0 0 5px var(--hover-darkest);
+    text-shadow: 0 0 5px var(--hover-darkest)
 }
 
 .operation {
     background: var(--dark)
 }
 
+.operation::before {
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+}
+
+.operation:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--hover-dark)
+}
+
+.operation:hover {
+    color: var(--hover-dark);
+    box-shadow: 0 0 5px var(--hover-dark);
+    text-shadow: 0 0 5px var(--hover-dark)
+}
+
+.number::before {
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+}
+
+.number:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--hover-dark)
+}
+
 .number:hover {
-    box-shadow: 5px 5px var(--dark)
+    color: var(--darkest);
+    box-shadow: 0 0 5px var(--hover-dark);
+    text-shadow: 0 0 5px var(--darkest);
+    backdrop-filter: blur(100px);
+}
+
+#ac {
+    width: 185px;
 }
 
 #zero {

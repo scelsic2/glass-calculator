@@ -3,20 +3,27 @@ const screen = document.querySelector('.screen')
 
 let equation = []
 
-function buttonPress(e) {
+function buttonClick(e) {
     
+    if (screen.innerHTML == 0) {
+        screen.innerHTML = ""
+    }
+
     if (e.target.classList.contains('operation')) {
         let storedNumber = screen.innerHTML
-        let integer = parseInt(storedNumber)
+        console.log('-----storedNumber-----')
+        console.log(storedNumber)
         
         let operation = e.target.textContent
         if (operation == 'x') {
             operation = '*'
         }
 
-        screen.innerHTML += operation
+        screen.innerHTML = ""
 
-        equation.push(integer)
+        equation.push(storedNumber)
+        console.log('-----storedNumber-----')
+        console.log(storedNumber)
         equation.push(operation)
         console.log('-----equation-----')
         console.log(equation)
@@ -37,12 +44,12 @@ function buttonPress(e) {
         
     } else if (e.target.textContent == 'AC') {
         console.log('clear')
-        screen.innerHTML = ""
+        screen.innerHTML = "0"
         equation = []
-    } else if (e.target.textContent == '+/-') {
-         console.log('negative')
-    } else if (e.target.textContent == '%') {
-        console.log('percentage')
+    // } else if (e.target.textContent == '+/-') {
+    //      console.log('negative')
+    // } else if (e.target.textContent == '%') {
+    //     console.log('percentage')
     } else if (e.target.textContent == 7) {
         console.log(7)
         screen.innerHTML += 7
@@ -74,9 +81,9 @@ function buttonPress(e) {
         console.log(0)
         screen.innerHTML += 0
     } else if (e.target.textContent == '.') {
-        console.log('decimal point')
+        console.log('.')
         screen.innerHTML += '.'
     } 
 }
 
-keypad.addEventListener('click', buttonPress)
+keypad.addEventListener('click', buttonClick)
